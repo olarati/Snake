@@ -224,6 +224,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 406833629}
+  - component: {fileID: 406833630}
   m_Layer: 0
   m_Name: Snake
   m_TagString: Untagged
@@ -246,6 +247,23 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &406833630
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 406833628}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13b3ccccb37cc6144baeccde1f9aefdd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GameField: {fileID: 844882675}
+  HeadPrefab: {fileID: 8425453011488229503, guid: 989f8cd0b429edd4dbb274dd396b38d8, type: 3}
+  BodyPrefab: {fileID: 8339428847176774498, guid: 8b355eb14fd8b3f4c80d961016f8e4cb, type: 3}
+  StartCellId: {x: 5, y: 5}
+  MoveDelay: 1.3
 --- !u!1 &696832684
 GameObject:
   m_ObjectHideFlags: 0
@@ -408,6 +426,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GameField: {fileID: 844882675}
+  Snake: {fileID: 406833630}
 --- !u!4 &1703010703
 Transform:
   m_ObjectHideFlags: 0
