@@ -17,7 +17,7 @@ public class GameField : MonoBehaviour
         {
             for (int j = 0; j < CellsInRow; j++)
             {
-                _cellsPositions[i, j] = FirstCellPoint.position + Vector3.right * i * CellSize.x + Vector3.up * j * CellSize.y;
+                _cellsPositions[i, j] = (Vector2) FirstCellPoint.position + Vector2.right * i * CellSize.x + Vector2.up * j * CellSize.y;
             }
         }
     }

@@ -146,7 +146,7 @@ public class Snake : MonoBehaviour
         {
             headEuler = new Vector3(0f, 0f, -90f);
         }
-        else if (direction.x == 0 && direction.y == -11)
+        else if (direction.x == 0 && direction.y == -1)
         {
             headEuler = new Vector3(0f, 0f, 180f);
         }
