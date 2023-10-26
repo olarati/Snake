@@ -7,7 +7,7 @@ public class Snake : MonoBehaviour
     public AppleSpawner AppleSpawner;
 
     public GameFieldObject HeadPrefab;
-    public GameFieldObject BodyPrefab;
+    public GameFieldObject BodyPrefab; 
 
     public Vector2Int StartCellId = new Vector2Int(5, 5);
 

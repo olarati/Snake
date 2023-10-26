@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7436817202317276822}
   - component: {fileID: 476366840534762737}
-  - component: {fileID: 6351171018724470768}
+  - component: {fileID: 3529880784285081139}
   m_Layer: 0
   m_Name: BaseSnakePart
   m_TagString: Untagged
@@ -85,7 +85,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &6351171018724470768
+--- !u!114 &3529880784285081139
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
