@@ -2,40 +2,60 @@ using UnityEngine;
 
 public class Snake : MonoBehaviour
 {
+    public GameStateChanger GameStateChanger;
     public GameField GameField;
+    public AppleSpawner AppleSpawner;
 
-    public SnakePart HeadPrefab;
-    public SnakePart BodyPrefab;
+    public GameFieldObject HeadPrefab;
+    public GameFieldObject BodyPrefab;
 
     public Vector2Int StartCellId = new Vector2Int(5, 5);
 
     public float MoveDelay = 1.3f;
 
-    private SnakePart[] _parts;
+    private GameFieldObject[] _parts;
     private Vector2Int _moveDirection = Vector2Int.up;
     private float _moveTimer;
+    private bool _isActive;
 
-    public void CreateSnake()
+    public int GetSnakePartsLength()
     {
-        _parts = new SnakePart[0];
+        return _parts.Length;
+    }
+
+    public void StartGame()
+    {
+        CreateSnake();
+        _isActive = true;
+    }
+
+    public void StopGame()
+    {
+        _isActive = false;
+    }
+
+    private void CreateSnake()
+    {
+        _parts = new GameFieldObject[0];
         AddPart(HeadPrefab, StartCellId);
         AddPart(BodyPrefab, StartCellId + Vector2Int.down);
     }
 
-    private void AddPart(SnakePart partPrefab, Vector2Int cellId)
+
+    private void AddPart(GameFieldObject partPrefab, Vector2Int cellId)
     {
         IncreasePartsArrayLenght();
 
-        SnakePart newSnakePart = Instantiate(partPrefab);
+        GameFieldObject newSnakePart = Instantiate(partPrefab);
         _parts[_parts.Length - 1] = newSnakePart;
 
-        SetPartCell(newSnakePart, cellId);
+        GameField.SetObjectCell(newSnakePart, cellId);
     }
 
     private void IncreasePartsArrayLenght()
     {
-        SnakePart[] tempParts = _parts;
-        _parts = new SnakePart[tempParts.Length + 1];
+        GameFieldObject[] tempParts = _parts;
+        _parts = new GameFieldObject[tempParts.Length + 1];
 
         for (int i = 0; i < tempParts.Length; i++)
         {
@@ -43,14 +63,14 @@ public class Snake : MonoBehaviour
         } 
     }
 
-    private void SetPartCell(SnakePart part, Vector2Int cellId)
-    {
-        Vector2 cellPosition = GameField.GetCellPosition(cellId.x, cellId.y);
-        part.SetCellPosition(cellId, cellPosition);
-    }
+    
 
     private void Update()
     {
+        if (!_isActive)
+        {
+            return;
+        }
         GetMoveDirection();
         MoveTimerTick();
     }
@@ -94,19 +114,26 @@ public class Snake : MonoBehaviour
     private void Move()
     {
         _moveTimer = 0;
+        Vector2Int lastPartCellId = _parts[_parts.Length - 1].GetCellId();
+        Vector2Int headNewCell = MoveCellId(_parts[0].GetCellId(), _moveDirection);
+
+        GameField.SetCellsEmpty(lastPartCellId.x, lastPartCellId.y, true);
+
         for (int i = _parts.Length - 1; i >= 0; i--)
         {
             Vector2Int partCellId = _parts[i].GetCellId();
             if (i == 0)
             {
-                partCellId = MoveCellId(partCellId, _moveDirection);
+                partCellId = headNewCell;
             }
             else
             {
                 partCellId = _parts[i - 1].GetCellId();
             }
-            SetPartCell(_parts[i], partCellId);
+            GameField.SetObjectCell(_parts[i], partCellId);
         }
+        CheckNextCellFail(headNewCell);
+        CheckNextCellApple(headNewCell, lastPartCellId);
     }
 
     private Vector2Int MoveCellId(Vector2Int cellId, Vector2Int direction)
@@ -156,6 +183,26 @@ public class Snake : MonoBehaviour
         }
 
         _parts[0].transform.eulerAngles = headEuler;
+    }
+
+    private void CheckNextCellFail(Vector2Int nextCellId)
+    {
+        for (int i = 1; i < _parts.Length; i++)
+        {
+            if (_parts[i].GetCellId() == nextCellId)
+            {
+                GameStateChanger.EndGame();
+            }
+        }
+    }
+
+    private void CheckNextCellApple(Vector2Int nextCellId, Vector2Int cellIdForAddPart)
+    {
+        if(AppleSpawner.GetAppleCellId() == nextCellId)
+        {
+            AddPart(BodyPrefab, cellIdForAddPart);
+            AppleSpawner.SetNextApple();
+        }
     }
 
 }

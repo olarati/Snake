@@ -215,6 +215,54 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &351856155
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 351856157}
+  - component: {fileID: 351856156}
+  m_Layer: 0
+  m_Name: AppleSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &351856156
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 351856155}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 121c00ac1b2305e49a67743147053235, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GameStateChanger: {fileID: 1703010702}
+  GameField: {fileID: 844882675}
+  Snake: {fileID: 406833630}
+  ApplePrefab: {fileID: 1729978440476799689, guid: 3eafa0fb7b415fa4dac12aa06f612cd2, type: 3}
+--- !u!4 &351856157
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 351856155}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &406833628
 GameObject:
   m_ObjectHideFlags: 0
@@ -259,7 +307,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13b3ccccb37cc6144baeccde1f9aefdd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  GameStateChanger: {fileID: 1703010702}
   GameField: {fileID: 844882675}
+  AppleSpawner: {fileID: 351856156}
   HeadPrefab: {fileID: 8425453011488229503, guid: 989f8cd0b429edd4dbb274dd396b38d8, type: 3}
   BodyPrefab: {fileID: 8339428847176774498, guid: 8b355eb14fd8b3f4c80d961016f8e4cb, type: 3}
   StartCellId: {x: 5, y: 5}
@@ -427,6 +477,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GameField: {fileID: 844882675}
   Snake: {fileID: 406833630}
+  AppleSpawner: {fileID: 351856156}
 --- !u!4 &1703010703
 Transform:
   m_ObjectHideFlags: 0
@@ -450,3 +501,4 @@ SceneRoots:
   - {fileID: 1703010703}
   - {fileID: 844882674}
   - {fileID: 406833629}
+  - {fileID: 351856157}

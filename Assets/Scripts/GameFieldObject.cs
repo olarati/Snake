@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class SnakePart : MonoBehaviour
+public class GameFieldObject : MonoBehaviour
 {
     private Vector2Int _cellId;
 
@@ -14,4 +14,5 @@ public class SnakePart : MonoBehaviour
     {
         return _cellId;
     }
+
 }
