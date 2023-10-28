@@ -5,6 +5,7 @@ public class Snake : MonoBehaviour
     public GameStateChanger GameStateChanger;
     public GameField GameField;
     public AppleSpawner AppleSpawner;
+    public Score Score;
 
     public GameFieldObject HeadPrefab;
     public GameFieldObject BodyPrefab; 
@@ -34,6 +35,12 @@ public class Snake : MonoBehaviour
         _isActive = false;
     }
 
+    public void RestartGame()
+    {
+        DestroySnake();
+        StartGame();
+    }
+
     private void CreateSnake()
     {
         _parts = new GameFieldObject[0];
@@ -41,6 +48,13 @@ public class Snake : MonoBehaviour
         AddPart(BodyPrefab, StartCellId + Vector2Int.down);
     }
 
+    private void DestroySnake()
+    {
+        for (int i = 0; i < _parts.Length; i++)
+        {
+            Destroy(_parts[i].gameObject);
+        }
+    }
 
     private void AddPart(GameFieldObject partPrefab, Vector2Int cellId)
     {
@@ -202,6 +216,7 @@ public class Snake : MonoBehaviour
         {
             AddPart(BodyPrefab, cellIdForAddPart);
             AppleSpawner.SetNextApple();
+            Score.AddScore(1);
         }
     }
 
