@@ -78,12 +78,12 @@ public class GameStateChanger : MonoBehaviour
 
     private void SetGameEndScoreText(int value)
     {
-        GameEndScoreText.text = $"Ты набрал {value}!";
+        GameEndScoreText.text = $"Игра окончена!\nКоличество очков: {value}";
     }
 
     private void SetOldBestScoreText(int value)
     {
-        BestScoreText.text = $"Лучший результат {value}";
+        BestScoreText.text = $"Лучший результат: {value}";
     }
 
     private void SetNewBestScoreText(int value)
