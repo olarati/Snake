@@ -215,6 +215,55 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &255622933
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 255622935}
+  - component: {fileID: 255622934}
+  m_Layer: 0
+  m_Name: BonusAppleSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &255622934
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 255622933}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 121c00ac1b2305e49a67743147053235, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GameStateChanger: {fileID: 1703010702}
+  GameField: {fileID: 844882675}
+  Snake: {fileID: 406833630}
+  ApplePrefab: {fileID: 6228149041261501413, guid: 646080bcaaee2654d9b76971e5f411e3, type: 3}
+  StepsBeforeSpawn: 5
+--- !u!4 &255622935
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 255622933}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &283459711
 GameObject:
   m_ObjectHideFlags: 0
@@ -432,6 +481,7 @@ MonoBehaviour:
   GameField: {fileID: 844882675}
   Snake: {fileID: 406833630}
   ApplePrefab: {fileID: 1729978440476799689, guid: 3eafa0fb7b415fa4dac12aa06f612cd2, type: 3}
+  StepsBeforeSpawn: 0
 --- !u!4 &351856157
 Transform:
   m_ObjectHideFlags: 0
@@ -494,6 +544,7 @@ MonoBehaviour:
   GameStateChanger: {fileID: 1703010702}
   GameField: {fileID: 844882675}
   AppleSpawner: {fileID: 351856156}
+  BonusAppleSpawner: {fileID: 255622934}
   Score: {fileID: 283459713}
   HeadPrefab: {fileID: 2031822053565905340, guid: 989f8cd0b429edd4dbb274dd396b38d8, type: 3}
   BodyPrefab: {fileID: 1973942097245635233, guid: 8b355eb14fd8b3f4c80d961016f8e4cb, type: 3}
@@ -599,7 +650,7 @@ Transform:
   m_GameObject: {fileID: 696832684}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8, y: -8, z: 0}
+  m_LocalPosition: {x: -8.4, y: -8.4, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -743,7 +794,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   FirstCellPoint: {fileID: 696832685}
-  CellSize: {x: 1.777778, y: 1.777778}
+  CellSize: {x: 1.866667, y: 1.866667}
   CellsInRow: 10
 --- !u!1 &884138122
 GameObject:
@@ -1527,7 +1578,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GameField: {fileID: 844882675}
   Snake: {fileID: 406833630}
-  AppleSpawner: {fileID: 351856156}
+  AppleSpawners:
+  - {fileID: 351856156}
+  - {fileID: 255622934}
   Score: {fileID: 283459713}
   GameScreen: {fileID: 957924933}
   GameEndScreen: {fileID: 719702785}
@@ -1625,5 +1678,6 @@ SceneRoots:
   - {fileID: 844882674}
   - {fileID: 406833629}
   - {fileID: 351856157}
+  - {fileID: 255622935}
   - {fileID: 884138126}
   - {fileID: 2035460627}

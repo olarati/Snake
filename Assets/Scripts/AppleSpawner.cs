@@ -7,12 +7,20 @@ public class AppleSpawner : MonoBehaviour
     public Snake Snake;
 
     public GameFieldObject ApplePrefab;
+    public int StepsBeforeSpawn = 0;
 
     private GameFieldObject _apple;
+    private int _stepCounter = -1;
 
     public void CreateApple()
     {
         _apple = Instantiate(ApplePrefab);
+        SetNextApple();
+    }
+
+    public void Restart()
+    {
+        _stepCounter = -1;
         SetNextApple();
     }
 
@@ -27,6 +35,14 @@ public class AppleSpawner : MonoBehaviour
             GameStateChanger.EndGame();
             return;
         }
+
+        _stepCounter++;
+        if(_stepCounter < StepsBeforeSpawn)
+        {
+            HideApple();
+            return;
+        }
+        ShowApple();
 
         int emptyCellsCount = GetEmptyCellsCount();
         Vector2Int[] possibleCellsIds = new Vector2Int[emptyCellsCount];
@@ -53,6 +69,17 @@ public class AppleSpawner : MonoBehaviour
         return _apple.GetCellId();
     }
 
+    public void HideApple()
+    {
+        SetActiveApple(false);
+    }
+
+    public void ShowApple()
+    {
+        _stepCounter = 0;
+        SetActiveApple(true);
+    }
+
     private bool CheckHasEmptyCells()
     {
         return GetEmptyCellsCount() > 0;
@@ -65,5 +92,8 @@ public class AppleSpawner : MonoBehaviour
         return fieldCellsCount - snakePartsLength;
     }
 
-
+    private void SetActiveApple(bool value)
+    {
+        _apple.gameObject.SetActive(value);
+    }
 }

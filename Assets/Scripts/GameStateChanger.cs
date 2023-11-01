@@ -5,7 +5,7 @@ public class GameStateChanger : MonoBehaviour
 {
     public GameField GameField;
     public Snake Snake;
-    public AppleSpawner AppleSpawner;
+    public AppleSpawner[] AppleSpawners;
     public Score Score;
 
     public GameObject GameScreen;
@@ -14,8 +14,15 @@ public class GameStateChanger : MonoBehaviour
     public TextMeshProUGUI GameEndScoreText;
     public TextMeshProUGUI BestScoreText;
 
+    private bool _isGameStarted;
+
     public void EndGame()
     {
+        if (!_isGameStarted)
+        {
+            return;
+        }
+        _isGameStarted = false;
         Snake.StopGame();
         RefreshScores();
         SwitchScreens(false);
@@ -23,15 +30,23 @@ public class GameStateChanger : MonoBehaviour
 
     public void StartGame()
     {
+        _isGameStarted = true;
         Snake.StartGame();
-        AppleSpawner.CreateApple();
+        for (int i = 0; i < AppleSpawners.Length; i++)
+        {
+            AppleSpawners[i].CreateApple();
+        }
         SwitchScreens(true);
     }
 
     public void RestartGame()
     {
+        _isGameStarted = true;
         Snake.RestartGame();
-        AppleSpawner.SetNextApple();
+        for (int i = 0; i < AppleSpawners.Length; i++)
+        {
+            AppleSpawners[i].Restart();
+        }
         Score.Restart();
         SwitchScreens(true);
     }

@@ -5,6 +5,7 @@ public class Snake : MonoBehaviour
     public GameStateChanger GameStateChanger;
     public GameField GameField;
     public AppleSpawner AppleSpawner;
+    public AppleSpawner BonusAppleSpawner;
     public Score Score;
 
     public GameFieldObject HeadPrefab;
@@ -58,7 +59,7 @@ public class Snake : MonoBehaviour
 
     private void AddPart(GameFieldObject partPrefab, Vector2Int cellId)
     {
-        IncreasePartsArrayLenght();
+        ChangePartsArrayLenght(1);
 
         GameFieldObject newSnakePart = Instantiate(partPrefab);
         _parts[_parts.Length - 1] = newSnakePart;
@@ -66,18 +67,27 @@ public class Snake : MonoBehaviour
         GameField.SetObjectCell(newSnakePart, cellId);
     }
 
-    private void IncreasePartsArrayLenght()
+    private void RemovePart()
+    {
+        Destroy(_parts[_parts.Length - 1].gameObject);
+        ChangePartsArrayLenght(-1);
+    }
+
+    private void ChangePartsArrayLenght(int count)
     {
         GameFieldObject[] tempParts = _parts;
-        _parts = new GameFieldObject[tempParts.Length + 1];
+        _parts = new GameFieldObject[tempParts.Length + count];
 
-        for (int i = 0; i < tempParts.Length; i++)
+        for (int i = 0; i < _parts.Length; i++)
         {
+            if(i >= tempParts.Length)
+            {
+                break;
+            }
             _parts[i] = tempParts[i];
         } 
     }
 
-    
 
     private void Update()
     {
@@ -216,7 +226,17 @@ public class Snake : MonoBehaviour
         {
             AddPart(BodyPrefab, cellIdForAddPart);
             AppleSpawner.SetNextApple();
+            BonusAppleSpawner.SetNextApple();
             Score.AddScore(1);
+        }
+        else if(BonusAppleSpawner.GetAppleCellId() == nextCellId)
+        {
+            int countToRemove = 2;
+            for (int i = 0; i < countToRemove; i++)
+            {
+                RemovePart();
+            }
+            BonusAppleSpawner.HideApple();
         }
     }
 
