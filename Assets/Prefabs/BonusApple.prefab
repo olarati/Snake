@@ -64,6 +64,22 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6990291501464184467, guid: 3eafa0fb7b415fa4dac12aa06f612cd2, type: 3}
+      propertyPath: m_Animation
+      value: 
+      objectReference: {fileID: 7400000, guid: e1d3dfabafbf58b48b655de6fb20effd, type: 2}
+    - target: {fileID: 6990291501464184467, guid: 3eafa0fb7b415fa4dac12aa06f612cd2, type: 3}
+      propertyPath: m_Animations.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6990291501464184467, guid: 3eafa0fb7b415fa4dac12aa06f612cd2, type: 3}
+      propertyPath: m_Animations.Array.data[0]
+      value: 
+      objectReference: {fileID: 7400000, guid: e1d3dfabafbf58b48b655de6fb20effd, type: 2}
+    - target: {fileID: 6990291501464184467, guid: 3eafa0fb7b415fa4dac12aa06f612cd2, type: 3}
+      propertyPath: m_Animations.Array.data[1]
+      value: 
+      objectReference: {fileID: 7400000, guid: e1d3dfabafbf58b48b655de6fb20effd, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

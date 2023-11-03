@@ -10,11 +10,13 @@ public class AppleSpawner : MonoBehaviour
     public int StepsBeforeSpawn = 0;
 
     private GameFieldObject _apple;
+    private Animation _appleAnimation;
     private int _stepCounter = -1;
 
     public void CreateApple()
     {
         _apple = Instantiate(ApplePrefab);
+        _appleAnimation = _apple.GetComponent<Animation>();
         SetNextApple();
     }
 
@@ -43,6 +45,7 @@ public class AppleSpawner : MonoBehaviour
             return;
         }
         ShowApple();
+        PlayAnimation();
 
         int emptyCellsCount = GetEmptyCellsCount();
         Vector2Int[] possibleCellsIds = new Vector2Int[emptyCellsCount];
@@ -95,5 +98,10 @@ public class AppleSpawner : MonoBehaviour
     private void SetActiveApple(bool value)
     {
         _apple.gameObject.SetActive(value);
+    }
+
+    private void PlayAnimation()
+    {
+        _appleAnimation.Play();
     }
 }
