@@ -274,6 +274,7 @@ GameObject:
   m_Component:
   - component: {fileID: 283459712}
   - component: {fileID: 283459713}
+  - component: {fileID: 283459714}
   m_Layer: 5
   m_Name: Score
   m_TagString: Untagged
@@ -314,6 +315,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 716da0d150dbef644b8e6c8021a9df17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!111 &283459714
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 283459711}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: 94131b3e27403f249be3791dac74a985, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: 94131b3e27403f249be3791dac74a985, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 0
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!1 &321289991
 GameObject:
   m_ObjectHideFlags: 0
@@ -581,7 +598,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 283459712}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -15}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 50, y: 0}

@@ -45,7 +45,7 @@ public class AppleSpawner : MonoBehaviour
             return;
         }
         ShowApple();
-        PlayAnimation();
+        PlayAppleAnimation();
 
         int emptyCellsCount = GetEmptyCellsCount();
         Vector2Int[] possibleCellsIds = new Vector2Int[emptyCellsCount];
@@ -100,7 +100,7 @@ public class AppleSpawner : MonoBehaviour
         _apple.gameObject.SetActive(value);
     }
 
-    private void PlayAnimation()
+    private void PlayAppleAnimation()
     {
         _appleAnimation.Play();
     }
