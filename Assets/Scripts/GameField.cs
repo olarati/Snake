@@ -36,6 +36,11 @@ public class GameField : MonoBehaviour
         return _cells[x, y].GetPosition();
     }
 
+    public Vector2 GetCellPosition(Vector2Int cellId)
+    {
+        return GetCellPosition(cellId.x, cellId.y);
+    }
+
     public void SetObjectCell(GameFieldObject obj, Vector2Int newCellId)
     {
         Vector2 cellPosition = GetCellPosition(newCellId.x, newCellId.y);

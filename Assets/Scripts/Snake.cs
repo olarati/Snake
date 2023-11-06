@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Snake : MonoBehaviour
@@ -14,6 +15,7 @@ public class Snake : MonoBehaviour
     public Vector2Int StartCellId = new Vector2Int(5, 5);
 
     public float MoveDelay = 1.3f;
+    public float ExplosionForce = 60;
 
     private GameFieldObject[] _parts;
     private Vector2Int _moveDirection = Vector2Int.up;
@@ -216,6 +218,8 @@ public class Snake : MonoBehaviour
             if (_parts[i].GetCellId() == nextCellId)
             {
                 GameStateChanger.EndGame();
+                Vector2 partPosition = GameField.GetCellPosition(_parts[i].GetCellId());
+                ExplodeSnake(partPosition);
             }
         }
     }
@@ -240,4 +244,15 @@ public class Snake : MonoBehaviour
         }
     }
 
+    private void ExplodeSnake(Vector2 explodePosition)
+    {
+        for (int i = 0; i < _parts.Length; i++)
+        {
+            Rigidbody2D partRigid = _parts[i].GetComponent<Rigidbody2D>();
+            partRigid.simulated = true;
+            Vector2 partPosition = GameField.GetCellPosition(_parts[i].GetCellId());
+            Vector2 explodeDirection = partPosition - explodePosition;
+            partRigid.AddForce((explodeDirection.normalized + Vector2.up) * ExplosionForce, ForceMode2D.Impulse);
+        }
+    }
 }

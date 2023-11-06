@@ -567,6 +567,7 @@ MonoBehaviour:
   BodyPrefab: {fileID: 1973942097245635233, guid: 8b355eb14fd8b3f4c80d961016f8e4cb, type: 3}
   StartCellId: {x: 5, y: 5}
   MoveDelay: 1.3
+  ExplosionForce: 60
 --- !u!1 &453658233
 GameObject:
   m_ObjectHideFlags: 0
