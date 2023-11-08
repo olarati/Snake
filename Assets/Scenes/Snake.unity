@@ -794,8 +794,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   FirstCellPoint: {fileID: 696832685}
-  CellSize: {x: 1.866667, y: 1.866667}
-  CellsInRow: 10
+  CellSize: {x: 1.5272727, y: 1.5272727}
+  CellsInRow: 12
 --- !u!1 &884138122
 GameObject:
   m_ObjectHideFlags: 0
