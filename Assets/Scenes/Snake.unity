@@ -339,7 +339,7 @@ Transform:
   m_GameObject: {fileID: 696832684}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8, y: -8, z: 0}
+  m_LocalPosition: {x: -8.4, y: -8.4, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -444,8 +444,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   FirstCellPoint: {fileID: 696832685}
-  CellSize: {x: 1.777778, y: 1.777778}
-  CellsInRow: 10
+  CellSize: {x: 1.527273, y: 1.5272727}
+  CellsInRow: 12
 --- !u!1 &1703010701
 GameObject:
   m_ObjectHideFlags: 0
